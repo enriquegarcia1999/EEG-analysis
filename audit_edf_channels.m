@@ -38,7 +38,7 @@
 %  VERSION: 1.0
 % =========================================================================
 
-% ---- USER SETTINGS (only line you need to edit) -------------------------
+% ---- USER SETTINGS -------------------------
 
 inputFolder = '/home/yourpath';
 
