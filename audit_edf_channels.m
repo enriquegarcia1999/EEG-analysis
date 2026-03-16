@@ -22,7 +22,7 @@
 %
 %  USAGE
 %  -----
-%  1. Set 'inputFolder' (line 33) to the path of your EDF directory.
+%  1. Set 'inputFolder' (line 43) to the path of your EDF directory.
 %  2. Press F5 or click Run.
 %
 %  NOTES ON EDF FORMAT
