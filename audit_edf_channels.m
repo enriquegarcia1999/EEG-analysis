@@ -40,7 +40,7 @@
 
 % ---- USER SETTINGS (only line you need to edit) -------------------------
 
-inputFolder = '/home/ac/egarciavaldes/Desktop/EEG/EDF_working_copy';
+inputFolder = '/home/yourpath';
 
 % -------------------------------------------------------------------------
 
