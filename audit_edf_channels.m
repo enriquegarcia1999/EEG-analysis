@@ -68,7 +68,7 @@ fprintf('Found %d EDF file(s) in:\n  %s\n\n', numel(files), inputFolder);
 % =========================================================================
 %  SECTION 1 — PRE-ALLOCATION
 %  Create empty containers before the loop so MATLAB does not need to
-%  resize arrays on every iteration (more efficient for large datasets)
+%  resize arrays on every iteration
 % =========================================================================
 
 nFiles     = numel(files);
