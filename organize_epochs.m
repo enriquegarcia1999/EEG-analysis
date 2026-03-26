@@ -27,12 +27,12 @@
 
 % List of batch folder paths to process
 batch_folders = {
-    '/home/ac/egarciavaldes/Desktop/EEG/Preprocessing/B009_20260326_123518'
-    %'FOLDERPATH', ...
+    
+    'FOLDERPATH', ...
 };
 
 % Destination root folder where results will be written
-dest_root = '/home/ac/egarciavaldes/Desktop/EEG/Output/'; 
+dest_root = 'folderpath'; 
 
 % Maximum number of epochs to keep per level+frequency combination
 max_epochs = 10;
