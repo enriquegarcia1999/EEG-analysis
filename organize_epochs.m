@@ -1,9 +1,13 @@
 %% organize_epochs.m
-% Copies epochs 1-10 (per level+frequency combination) from batch folders
-% to a destination directory, and organizes .log and .pkl files.
+% Copies epochs 1-10 (per level+frequency combination) from all batch folders
+% found inside a given root folder, and organizes .log and .pkl files.
+%
+% Set 'batches_root' to the folder that contains all your batch folders.
+% Every subfolder inside it will be treated as a batch and processed.
 %
 % STRUCTURE EXPECTED:
-%   [batch_folder]/
+%   [batches_root]/
+%       [batch_folder]/
 %       something.log
 %       something.pkl
 %       [subject]EDF/
@@ -25,14 +29,11 @@
 %                        USER CONFIGURATION
 % =========================================================================
 
-% List of batch folder paths to process
-batch_folders = {
-    
-    'FOLDERPATH', ...
-};
+% Folder that contains all batch folders (every subfolder will be processed)
+batches_root = '/home/ac/egarciavaldes/Desktop/EEG/Preprocessing/';
 
 % Destination root folder where results will be written
-dest_root = 'folderpath'; 
+dest_root = '/home/ac/egarciavaldes/Desktop/EEG/Output/';
 
 % Maximum number of epochs to keep per level+frequency combination
 max_epochs = 10;
@@ -40,6 +41,24 @@ max_epochs = 10;
 % =========================================================================
 %                          MAIN PROCESSING
 % =========================================================================
+
+% Discover all subfolders inside batches_root
+if ~exist(batches_root, 'dir')
+    error('Batches root folder not found: %s', batches_root);
+end
+
+all_entries   = dir(batches_root);
+subfolders    = all_entries([all_entries.isdir] & ...
+                ~strcmp({all_entries.name}, '.') & ...
+                ~strcmp({all_entries.name}, '..'));
+
+if isempty(subfolders)
+    fprintf('No batch folders found in: %s\nNothing to do.\n', batches_root);
+    return;
+end
+
+batch_folders = fullfile(batches_root, {subfolders.name});
+fprintf('Found %d batch folder(s) in: %s\n', numel(batch_folders), batches_root);
 
 % Create destination root if it doesn't exist
 if ~exist(dest_root, 'dir')
